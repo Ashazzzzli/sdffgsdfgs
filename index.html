@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FF85A2; /* Soft pink background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: red;
+            text-shadow: 2px 2px 8px black;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        #clickable {
+            font-size: 0.8rem; /* Small size */
+            color: #FF4040; /* Balanced red color */
+            text-shadow: 1px 1px black; /* Black stroke effect */
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .kiss {
+            position: absolute;
+            font-size: 25px;
+            font-weight: bold;
+            color: red;
+            text-shadow: 2px 2px 4px black;
+            opacity: 0;
+            animation: kissEffect 1.5s forwards;
+        }
+
+        @keyframes kissEffect {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>HAPPY BIRTHDAY BABY!</h1>
+    <div id="clickable">Click here!</div>
+
+    <script>
+        const clickable = document.getElementById('clickable');
+
+        clickable.addEventListener('click', () => {
+            createKissBubble(); // Creates a kiss bubble on every click
+        });
+
+        function createKissBubble() {
+            const kiss = document.createElement('div');
+            kiss.classList.add('kiss');
+            kiss.textContent = 'kiss';
+            kiss.style.left = `${Math.random() * window.innerWidth}px`;
+            kiss.style.top = `${Math.random() * window.innerHeight}px`;
+            document.body.appendChild(kiss);
+            setTimeout(() => kiss.remove(), 1500);
+        }
+    </script>
+</body>
+</html>
